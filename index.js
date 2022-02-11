@@ -1,3 +1,11 @@
+const server = require("./api/server");
+
+PORT = process.env.PORT;
+
+server.listen(PORT, () => {
+  console.log(`server listing at port: ${PORT}`);
+});
+
 /*
 play this: https://www.youtube.com/watch?v=d-diB65scQU
 
