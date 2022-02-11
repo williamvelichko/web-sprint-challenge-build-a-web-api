@@ -30,7 +30,29 @@ router.post("/", validateAction, (req, res) => {
       res.json(err);
     });
 });
-router.put("/:id", (req, res) => {});
-router.delete("/:id", (req, res) => {});
+router.put("/:id", validateId, validateAction, (req, res) => {
+  const { id } = req.params;
+  const action = req.body;
+
+  actions
+    .update(id, action)
+    .then((updated) => {
+      res.json(updated);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
+router.delete("/:id", validateId, (req, res) => {
+  const { id } = req.params;
+  actions
+    .remove(id)
+    .then((deleted) => {
+      res.status(200).json(req.action);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
 module.exports = router;
