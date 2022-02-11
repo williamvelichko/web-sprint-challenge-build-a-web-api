@@ -3,17 +3,21 @@ const express = require("express");
 const actions = require("./actions-model");
 const router = express.Router();
 
+const { validateId } = require("./actions-middlware");
+
 router.get("/", (req, res) => {
   actions
     .get()
     .then((actions) => {
-      console.log(actions);
+      res.json(actions);
     })
     .catch((err) => {
       res.json(err);
     });
 });
-router.get("/:id", (req, res) => {});
+router.get("/:id", validateId, (req, res) => {
+  res.status(200).json(req.action);
+});
 router.post("/", (req, res) => {});
 router.put("/:id", (req, res) => {});
 router.delete("/:id", (req, res) => {});
