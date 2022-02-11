@@ -1,7 +1,7 @@
 const express = require("express");
 
-const projects = require("./projectRouter/projectRouter");
-const actions = require("./actionRouter/actionRouter");
+const projects = require("./projects/projects-router");
+const actions = require("./actions/actions-router");
 
 const server = express();
 require("dotenv").config();

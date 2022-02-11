@@ -1,6 +1,6 @@
 const server = require("./api/server");
 
-PORT = process.env.PORT;
+PORT = process.env.PORT || 9000;
 
 server.listen(PORT, () => {
   console.log(`server listing at port: ${PORT}`);
