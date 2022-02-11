@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const projects = require("./projects/projects-router");
 const actions = require("./actions/actions-router");
@@ -6,6 +7,8 @@ const actions = require("./actions/actions-router");
 const server = express();
 require("dotenv").config();
 server.use(express.json());
+
+server.use(bodyParser.json());
 
 server.use("/api/projects", projects);
 server.use("/api/actions", actions);
